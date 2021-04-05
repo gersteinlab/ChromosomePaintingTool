@@ -7,7 +7,7 @@ This tool, developed by members of Yale University's Gerstein Lab, allows visual
 
 ## Instructions for Use
 
-Download the "chromosomePaintingBundle" directory on this repository, which has the app (app.R) and all necessary files for use of the tool. Opening app.R within this directory locally in RStudio will ensure that all file paths used in the code will work correctly.
+Download the "chromoPaintingBundle" directory on this repository, which has the app (app.R) and all necessary files for use of the tool. Opening app.R within this directory locally <b>in RStudio>/b> will ensure that all file paths used in the code will work correctly. A commented version of the app code is available within the "appCommented.R" file.
 
 ## Important Notes
 
