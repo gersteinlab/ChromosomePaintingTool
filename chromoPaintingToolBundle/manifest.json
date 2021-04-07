@@ -1321,6 +1321,21 @@
     "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt": {
       "checksum": "c41fd588bf6d24d38418fd4b442f018f"
     },
+    "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "91ae0d6b76c16527b9069e8609e57119"
+    },
     "annotation_files/ENC002.TransverseColon.ATAC-seq.Haplotype2.txt": {
       "checksum": "bb8aca18a410389e02459c2776403951"
     },
@@ -1332,6 +1347,21 @@
     },
     "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt": {
       "checksum": "3ce569c54c2ca98ec2b9a9305570c5c8"
+    },
+    "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "bf10d64ba6292200a0eaad747fa37579"
     },
     "annotation_files/ENC002.TransverseColon.H3K27ac.Haplotype2.txt": {
       "checksum": "dc2eae84fe689257cc3e8425a8efd2ef"
@@ -1537,6 +1567,21 @@
     "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt": {
       "checksum": "bb58964ea69e6a717d07ecd322f614cc"
     },
+    "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC003.TransverseColon.CTCF.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "11b973853d6599cb2c2b2c0c57abb56f"
+    },
     "annotation_files/ENC003.TransverseColon.CTCF.Haplotype2.txt": {
       "checksum": "9ca77ce64dcbcdf2ed3240ab31264449"
     },
@@ -1584,6 +1629,21 @@
     },
     "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt": {
       "checksum": "b94475a6e1ba41bad410ac7b09a0f3d0"
+    },
+    "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "179af6f000d1350fbc85417b18c2e6ee"
     },
     "annotation_files/ENC003.TransverseColon.total_RNA-seq.Haplotype2.txt": {
       "checksum": "6163878ea09e27c52698477c508ae6fd"
@@ -1678,6 +1738,21 @@
     "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt": {
       "checksum": "ba699218c4d44e27804e9e213573c9cc"
     },
+    "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "a52d18c87dc823eae3ed7bafd3e5eb4c"
+    },
     "annotation_files/ENC004.EsophagusMuscularisMucosa.H3K27ac.Haplotype2.txt": {
       "checksum": "ba2b56b323b857f753759b197bdd1cb0"
     },
@@ -1696,11 +1771,41 @@
     "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt": {
       "checksum": "bcc9b51bbb22dae8c32df27801f0af40"
     },
+    "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "d636e20ec3e10bcbaa67d30c6806eb59"
+    },
     "annotation_files/ENC004.TransverseColon.ATAC-seq.Haplotype2.txt": {
       "checksum": "a8ed08779817e4b648c12bb18d373d70"
     },
     "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt": {
       "checksum": "81752584c81c8419de387c782f1607d7"
+    },
+    "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.TransverseColon.CTCF.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "f82cfb69caff6ea0c9b71a70fe4dcdb6"
     },
     "annotation_files/ENC004.TransverseColon.CTCF.Haplotype2.txt": {
       "checksum": "0bd08fdd31a9c4f91602a20469c1db67"
@@ -1708,17 +1813,62 @@
     "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt": {
       "checksum": "9a215337af1545a272a26daa0c9ed662"
     },
+    "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "df0688ea4c50b6b3155bb16dc8a573a6"
+    },
     "annotation_files/ENC004.TransverseColon.H3K27ac.Haplotype2.txt": {
       "checksum": "0f75fb6b1aa6e2d2838db458f07dfbcc"
     },
     "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt": {
       "checksum": "9b7c13f1c49e11a12bdcb23424e63536"
     },
+    "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "d7e6b07cca8c34859be983a6f9d24cea"
+    },
     "annotation_files/ENC004.TransverseColon.POLR2A.Haplotype2.txt": {
       "checksum": "2f790124b754b56ec08fd0ac71aaad14"
     },
     "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt": {
       "checksum": "14a07eff752351dfdf0338a24a89b7ed"
+    },
+    "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/chromoMap-3.0.js": {
+      "checksum": "f40f4255e43bef5db07ddd9851da3272"
+    },
+    "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-0.3/d3.v5.js": {
+      "checksum": "b7b50b87cf3d30631885c28d0da9637a"
+    },
+    "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/chromoMap-binding-0.3/chromoMap.js": {
+      "checksum": "3fac3c4526329f1456da7a4d70bc2281"
+    },
+    "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap_files/htmlwidgets-1.5.3/htmlwidgets.js": {
+      "checksum": "ae5c4ea4df7a9e3398313f74a6b8edf2"
+    },
+    "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype1.txt.red.heatmap.html": {
+      "checksum": "d3282181c2c5fad43c680a6c20872f13"
     },
     "annotation_files/ENC004.TransverseColon.total_RNA-seq.Haplotype2.txt": {
       "checksum": "de65e5bcce0d7be6b66054590cc55b26"
@@ -1754,7 +1904,7 @@
       "checksum": "17c8af2d51f0136ffff40091566dd227"
     },
     "app.R": {
-      "checksum": "de34ddbf242a2dabe61545534c5497fe"
+      "checksum": "3b021245697898ea8fdb3c938e176b16"
     },
     "bin_files/-13300.chr2.660001-670000_bins.bed": {
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
@@ -2405,7 +2555,7 @@
       "checksum": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "ENTEX_chromosome_visualization_download.html": {
-      "checksum": "2028163efc94a55d6b5a2e8af56dc1ae"
+      "checksum": "bf10d64ba6292200a0eaad747fa37579"
     },
     "packrat/desc/base64enc": {
       "checksum": "42de02dfd12906d57ba09bae9b399f7f"

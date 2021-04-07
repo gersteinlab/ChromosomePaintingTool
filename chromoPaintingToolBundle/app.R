@@ -324,7 +324,310 @@ server <- function(input, output, session) {
   
   observeEvent(input$submit,{
     
-    updateTabItems(session, "chromomap", selected = "Information")
+      if (input$chromosomes != "ALL" || input$region != "") {
+        updateTabItems(session, "chromomap", selected = "Information")
+        panelText = HTML("<h2>Functionality for selecting individual chromosomes and specific regions will be added to this tool shortly.</h2>
+                             <h3>For now, please select <b>'ALL' chromosomes</b> and leave <b>Regions blank</b>, and click <b>submit</b> again</h3>
+                             <br>
+                             Note: the chromoMap tab will show an error")
+      }
+      else if (input$number_of_tracks == 1) {
+        if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
+            (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung"))
+        {
+          updateTabItems(session, "chromomap", selected = "Information")
+          panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
+                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
+                             <h3>Please re-select inputs on the left and click submit again</h3>
+                             <br>
+                             Note: <b>the chromoMap tab will show an error")
+        }
+        else {
+          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
+                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
+                                    <h5> Any error means there is missing data that will be added in the future </h5>
+                                   <h4># of tracks: <b>1</b> </h4>
+                                   <h4> Individual: <b>%s</b> </h4>
+                                   <h4> Tissue: <b>%s</b></h4>
+                                   <h4> Assay: <b> %s </b></h4>
+                                   <h4> Haplotype: <b> %s </b></h4>
+                                   <h4> Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
+                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1))
+        }
+      }
+      else if (input$number_of_tracks == 2) {
+        if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
+            (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
+            (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung"))
+        {
+          updateTabItems(session, "chromomap", selected = "Information")
+          panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
+                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
+                             <h3>Please re-select inputs on the left and click submit again</h3>
+                             <br>
+                             Note: <b>the chromoMap tab will show an error")
+        }
+        else {
+          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
+                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
+                                    <h5> Any error means there is missing data that will be added in the future </h5>
+                                   <h4># of tracks: <b>2</b> </h4>
+                                   <br>
+                                   <h4> Track 1 Individual: <b>%s</b> </h4>
+                                   <h4> Track 1 Tissue: <b>%s</b></h4>
+                                   <h4> Track 1 Assay: <b> %s </b></h4>
+                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 1 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 2 Individual: <b>%s</b> </h4>
+                                   <h4> Track 2 Tissue: <b>%s</b></h4>
+                                   <h4> Track 2 Assay: <b> %s </b></h4>
+                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 2 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
+                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
+                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2 ))
+        }
+      }
+      else if (input$number_of_tracks == 3) {
+        if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
+            (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
+            (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC002" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC003" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") || 
+            (input$individual3 == "ENC004" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC004" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
+            (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung"))
+        {
+          updateTabItems(session, "chromomap", selected = "Information")
+          panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
+                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
+                             <h3>Please re-select inputs on the left and click submit again</h3>
+                             <br>
+                             Note: <b>the chromoMap tab will show an error")
+        }
+        else {
+          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
+                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
+                                    <h5> Any error means there is missing data that will be added in the future </h5>
+                                   <h4># of tracks: <b>3</b> </h4>
+                                   <br>
+                                   <h4> Track 1 Individual: <b>%s</b> </h4>
+                                   <h4> Track 1 Tissue: <b>%s</b></h4>
+                                   <h4> Track 1 Assay: <b> %s </b></h4>
+                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 1 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 2 Individual: <b>%s</b> </h4>
+                                   <h4> Track 2 Tissue: <b>%s</b></h4>
+                                   <h4> Track 2 Assay: <b> %s </b></h4>
+                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 2 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 3 Individual: <b>%s</b> </h4>
+                                   <h4> Track 3 Tissue: <b>%s</b></h4>
+                                   <h4> Track 3 Assay: <b> %s </b></h4>
+                                   <h4> Track 3 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 3 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
+                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
+                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2,
+                                   input$individual3, input$tissue3, input$assay3, input$ploidy3, input$heat_map_colors3))
+        }
+      }
+      else if (input$number_of_tracks == 4) {
+        if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
+            (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
+            (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
+            (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
+            (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
+            (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
+            (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC002" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Adrenal Gland") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC003" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
+            (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") || 
+            (input$individual3 == "ENC004" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
+            (input$individual3 == "ENC004" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
+            (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
+            
+            (input$individual4 == "ENC001" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
+            (input$individual4 == "ENC001" && input$assay4 == "POLR2A" && input$tissue4 == "Adrenal Gland") ||
+            (input$individual4 == "ENC001" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
+            (input$individual4 == "ENC001" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
+            (input$individual4 == "ENC002" && input$assay4 == "POLR2A" && input$tissue4 == "Adrenal Gland") ||
+            (input$individual4 == "ENC002" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
+            (input$individual4 == "ENC002" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
+            (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Adrenal Gland") ||
+            (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
+            (input$individual4 == "ENC003" && input$assay4 == "H3K9me3" && input$tissue4 == "Transverse Colon") ||
+            (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
+            (input$individual4 == "ENC004" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") || 
+            (input$individual4 == "ENC004" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
+            (input$individual4 == "ENC004" && input$assay4 == "H3K9me3" && input$tissue4 == "Transverse Colon") ||
+            (input$individual4 == "ENC004" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung"))
+        {
+          updateTabItems(session, "chromomap", selected = "Information")
+          panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
+                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
+                             <h3>Please re-select inputs on the left and click submit again</h3>
+                             <br>
+                             Note: <b>the chromoMap tab will show an error")
+        }
+        else {
+          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
+                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
+                                    <h5> Any error means there is missing data that will be added in the future </h5>
+                                   <h4># of tracks: <b>4</b> </h4>
+                                   <br>
+                                   <h4> Track 1 Individual: <b>%s</b> </h4>
+                                   <h4> Track 1 Tissue: <b>%s</b></h4>
+                                   <h4> Track 1 Assay: <b> %s </b></h4>
+                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 1 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 2 Individual: <b>%s</b> </h4>
+                                   <h4> Track 2 Tissue: <b>%s</b></h4>
+                                   <h4> Track 2 Assay: <b> %s </b></h4>
+                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 2 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 3 Individual: <b>%s</b> </h4>
+                                   <h4> Track 3 Tissue: <b>%s</b></h4>
+                                   <h4> Track 3 Assay: <b> %s </b></h4>
+                                   <h4> Track 3 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 3 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4> Track 4 Individual: <b>%s</b> </h4>
+                                   <h4> Track 4 Tissue: <b>%s</b></h4>
+                                   <h4> Track 4 Assay: <b> %s </b></h4>
+                                   <h4> Track 4 Haplotype: <b> %s </b></h4>
+                                   <h4> Track 4 Color: <b> %s </b></h4>
+                                   <br>
+                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
+                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
+                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2,
+                                   input$individual3, input$tissue3, input$assay3, input$ploidy3, input$heat_map_colors3,
+                                   input$individual4, input$tissue4, input$assay4, input$ploidy4, input$heat_map_colors4))
+        }
+      }
     
     output$myChromoMap <- renderUI({ 
       
@@ -2126,311 +2429,6 @@ server <- function(input, output, session) {
       })
     })
     output$infopanel <- renderUI({
-      
-      isolate({
-        
-        if (input$chromosomes != "ALL" || input$region != "") {
-            panelText = HTML("<h2>Functionality for selecting individual chromosomes and specific regions will be added to this tool shortly.</h2>
-                             <h3>For now, please select <b>'ALL' chromosomes</b> and leave <b>Regions blank</b>, and click <b>submit</b> again</h3>
-                             <br>
-                             Note: the chromoMap tab will show an error")
-        }
-        else if (input$number_of_tracks == 1) {
-          if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
-              (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung"))
-                {
-            panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
-                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
-                             <h3>Please re-select inputs on the left and click submit again</h3>
-                             <br>
-                             Note: <b>the chromoMap tab will show an error")
-          }
-          else {
-          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
-                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
-                                    <h5> Any error means there is missing data that will be added in the future </h5>
-                                   <h4># of tracks: <b>1</b> </h4>
-                                   <h4> Individual: <b>%s</b> </h4>
-                                   <h4> Tissue: <b>%s</b></h4>
-                                   <h4> Assay: <b> %s </b></h4>
-                                   <h4> Haplotype: <b> %s </b></h4>
-                                   <h4> Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
-                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1))
-          }
-        }
-        else if (input$number_of_tracks == 2) {
-          if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
-              (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
-              (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung"))
-          {
-            panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
-                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
-                             <h3>Please re-select inputs on the left and click submit again</h3>
-                             <br>
-                             Note: <b>the chromoMap tab will show an error")
-          }
-          else {
-          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
-                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
-                                    <h5> Any error means there is missing data that will be added in the future </h5>
-                                   <h4># of tracks: <b>2</b> </h4>
-                                   <br>
-                                   <h4> Track 1 Individual: <b>%s</b> </h4>
-                                   <h4> Track 1 Tissue: <b>%s</b></h4>
-                                   <h4> Track 1 Assay: <b> %s </b></h4>
-                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 1 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 2 Individual: <b>%s</b> </h4>
-                                   <h4> Track 2 Tissue: <b>%s</b></h4>
-                                   <h4> Track 2 Assay: <b> %s </b></h4>
-                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 2 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
-                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
-                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2 ))
-          }
-        }
-        else if (input$number_of_tracks == 3) {
-          if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
-              (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
-              (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC002" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC003" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") || 
-              (input$individual3 == "ENC004" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC004" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
-              (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung"))
-          {
-            panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
-                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
-                             <h3>Please re-select inputs on the left and click submit again</h3>
-                             <br>
-                             Note: <b>the chromoMap tab will show an error")
-          }
-          else {
-          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
-                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
-                                    <h5> Any error means there is missing data that will be added in the future </h5>
-                                   <h4># of tracks: <b>3</b> </h4>
-                                   <br>
-                                   <h4> Track 1 Individual: <b>%s</b> </h4>
-                                   <h4> Track 1 Tissue: <b>%s</b></h4>
-                                   <h4> Track 1 Assay: <b> %s </b></h4>
-                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 1 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 2 Individual: <b>%s</b> </h4>
-                                   <h4> Track 2 Tissue: <b>%s</b></h4>
-                                   <h4> Track 2 Assay: <b> %s </b></h4>
-                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 2 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 3 Individual: <b>%s</b> </h4>
-                                   <h4> Track 3 Tissue: <b>%s</b></h4>
-                                   <h4> Track 3 Assay: <b> %s </b></h4>
-                                   <h4> Track 3 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 3 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
-                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
-                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2,
-                                   input$individual3, input$tissue3, input$assay3, input$ploidy3, input$heat_map_colors3))
-          }
-        }
-        else if (input$number_of_tracks == 4) {
-          if ((input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC001" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC002" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC002" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Adrenal Gland") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC003" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC003" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Esophagus Muscularis Mucosa") || 
-              (input$individual1 == "ENC004" && input$assay1 == "POLR2A" && input$tissue1 == "Esophagus Muscularis Mucosa") ||
-              (input$individual1 == "ENC004" && input$assay1 == "H3K9me3" && input$tissue1 == "Transverse Colon") ||
-              (input$individual1 == "ENC004" && input$assay1 == "ATAC-seq" && input$tissue1 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC001" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC002" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC002" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Adrenal Gland") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC003" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC003" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Esophagus Muscularis Mucosa") || 
-              (input$individual2 == "ENC004" && input$assay2 == "POLR2A" && input$tissue2 == "Esophagus Muscularis Mucosa") ||
-              (input$individual2 == "ENC004" && input$assay2 == "H3K9me3" && input$tissue2 == "Transverse Colon") ||
-              (input$individual2 == "ENC004" && input$assay2 == "ATAC-seq" && input$tissue2 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC001" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC001" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC002" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC002" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Adrenal Gland") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC003" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
-              (input$individual3 == "ENC003" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Esophagus Muscularis Mucosa") || 
-              (input$individual3 == "ENC004" && input$assay3 == "POLR2A" && input$tissue3 == "Esophagus Muscularis Mucosa") ||
-              (input$individual3 == "ENC004" && input$assay3 == "H3K9me3" && input$tissue3 == "Transverse Colon") ||
-              (input$individual3 == "ENC004" && input$assay3 == "ATAC-seq" && input$tissue3 == "Upper Lobe Of Left Lung") ||
-              
-              (input$individual4 == "ENC001" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
-              (input$individual4 == "ENC001" && input$assay4 == "POLR2A" && input$tissue4 == "Adrenal Gland") ||
-              (input$individual4 == "ENC001" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
-              (input$individual4 == "ENC001" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
-              (input$individual4 == "ENC002" && input$assay4 == "POLR2A" && input$tissue4 == "Adrenal Gland") ||
-              (input$individual4 == "ENC002" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
-              (input$individual4 == "ENC002" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
-              (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Adrenal Gland") ||
-              (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
-              (input$individual4 == "ENC003" && input$assay4 == "H3K9me3" && input$tissue4 == "Transverse Colon") ||
-              (input$individual4 == "ENC003" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung") ||
-              (input$individual4 == "ENC004" && input$assay4 == "ATAC-seq" && input$tissue4 == "Esophagus Muscularis Mucosa") || 
-              (input$individual4 == "ENC004" && input$assay4 == "POLR2A" && input$tissue4 == "Esophagus Muscularis Mucosa") ||
-              (input$individual4 == "ENC004" && input$assay4 == "H3K9me3" && input$tissue4 == "Transverse Colon") ||
-              (input$individual4 == "ENC004" && input$assay4 == "ATAC-seq" && input$tissue4 == "Upper Lobe Of Left Lung"))
-          {
-            panelText = HTML("<h2>Data for this particular combination of individual, assay, and tissue is <b>not available.</b> </h2>
-                             <h3>This could be because this specific experiment was never performed, or the data is not available on the ENCODE online portal.</h3>
-                             <h3>Please re-select inputs on the left and click submit again</h3>
-                             <br>
-                             Note: <b>the chromoMap tab will show an error")
-          }
-          else {
-          panelText = HTML(sprintf("<h2> chromoMap <strong>generated</strong></h2>
-                                    <h5> Note: chromoMap is generated on the <b>chromoMap</b> tab to the right of 'Information'</h5>
-                                    <h5> Any error means there is missing data that will be added in the future </h5>
-                                   <h4># of tracks: <b>4</b> </h4>
-                                   <br>
-                                   <h4> Track 1 Individual: <b>%s</b> </h4>
-                                   <h4> Track 1 Tissue: <b>%s</b></h4>
-                                   <h4> Track 1 Assay: <b> %s </b></h4>
-                                   <h4> Track 1 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 1 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 2 Individual: <b>%s</b> </h4>
-                                   <h4> Track 2 Tissue: <b>%s</b></h4>
-                                   <h4> Track 2 Assay: <b> %s </b></h4>
-                                   <h4> Track 2 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 2 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 3 Individual: <b>%s</b> </h4>
-                                   <h4> Track 3 Tissue: <b>%s</b></h4>
-                                   <h4> Track 3 Assay: <b> %s </b></h4>
-                                   <h4> Track 3 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 3 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4> Track 4 Individual: <b>%s</b> </h4>
-                                   <h4> Track 4 Tissue: <b>%s</b></h4>
-                                   <h4> Track 4 Assay: <b> %s </b></h4>
-                                   <h4> Track 4 Haplotype: <b> %s </b></h4>
-                                   <h4> Track 4 Color: <b> %s </b></h4>
-                                   <br>
-                                   <h4>Click on <strong> chromoMap </strong> tab to view painting (may take up to 15 seconds after switching tabs to generate and appear).</h4>", 
-                                   input$individual1, input$tissue1, input$assay1, input$ploidy1, input$heat_map_colors1,
-                                   input$individual2, input$tissue2, input$assay2, input$ploidy2, input$heat_map_colors2,
-                                   input$individual3, input$tissue3, input$assay3, input$ploidy3, input$heat_map_colors3,
-                                   input$individual4, input$tissue4, input$assay4, input$ploidy4, input$heat_map_colors4))
-          }
-        }
-      })
-      
-      
       tabPanel("Information", panelText)
     })
   })
